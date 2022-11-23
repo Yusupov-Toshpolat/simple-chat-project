@@ -1,4 +1,12 @@
 package uz.nt.simplechatproject.dto.custom;
 
-public class UserCustomDTO {
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import uz.nt.simplechatproject.dto.UserDTO;
+
+import java.util.List;
+@EqualsAndHashCode(callSuper = true)
+@Data
+public class UserCustomDTO extends UserDTO {
+    private List<ChatCustomDTO> chats;
 }

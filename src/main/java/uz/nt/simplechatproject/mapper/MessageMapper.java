@@ -1,0 +1,23 @@
+package uz.nt.simplechatproject.mapper;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import uz.nt.simplechatproject.dto.MessageDTO;
+import uz.nt.simplechatproject.dto.custom.MessageCustomDTO;
+import uz.nt.simplechatproject.model.Message;
+
+@Mapper(componentModel = "spring")
+public interface MessageMapper {
+    @Mapping(target = "author", source = "authorId")
+    @Mapping(target = "chat", source = "chatId")
+    @Mapping(target = "createdAt", source = "createdAt", dateFormat = "yyyy-MM-dd HH:mm:ss")
+    MessageDTO toDto(Message message);
+
+    @Mapping(target = "authorId", source = "author")
+    @Mapping(target = "chatId", source = "chat")
+    @Mapping(target = "createdAt", source = "createdAt", dateFormat = "yyyy-MM-dd HH:mm:ss")
+    Message toEntity(MessageDTO messageDTO);
+
+    @Mapping(target = "createdAt", source = "createdAt", dateFormat = "yyyy-MM-dd HH:mm:ss")
+    MessageCustomDTO toCustomDto(Message message);
+}
